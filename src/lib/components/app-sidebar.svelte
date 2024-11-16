@@ -5,6 +5,7 @@
   import History from "lucide-svelte/icons/history";
   import Network from "lucide-svelte/icons/network";
   import * as Sidebar from "$lib/components/ui/sidebar/index.js";
+  import { page } from "$app/stores";
   
   // Menu items.
   const items = [
@@ -36,6 +37,30 @@
   ];
 </script>
 
+<style>
+  .active {
+    color: #ffffff;
+    background-color: #ce711e;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  a {
+    transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  a:hover {
+    color: #ffffff;
+    background-color: #8c450e;
+  }
+</style>
+
 <Sidebar.Root>
   <Sidebar.Content>
     <Sidebar.Group>
@@ -46,7 +71,11 @@
             <Sidebar.MenuItem>
               <Sidebar.MenuButton>
                 {#snippet child({ props })}
-                  <a href={item.url} {...props}>
+                  <a 
+                    href={item.url} 
+                    class:active={$page.url.pathname === item.url}
+                    {...props}
+                  >
                     <svelte:component this={item.icon} />
                     <span>{item.title}</span>
                   </a>

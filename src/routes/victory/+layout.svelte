@@ -9,7 +9,7 @@
 	<AppSidebar />
 	<main>
 		<Sidebar.Trigger />
-		<div class="container">
+		<div class="bg-gradient-to-b from-[#2A092A] to-[#3F003F] p-12 text-white">
 			{@render children?.()}
 		</div>
 	</main>
