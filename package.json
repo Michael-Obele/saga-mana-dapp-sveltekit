@@ -33,6 +33,7 @@
 		"prettier": "^3.3.2",
 		"prettier-plugin-svelte": "^3.2.6",
 		"prettier-plugin-tailwindcss": "^0.6.5",
+		"prisma": "^5.22.0",
 		"svelte": "^5.0.0",
 		"svelte-check": "^4.0.0",
 		"tailwind-merge": "^2.5.4",
@@ -47,6 +48,7 @@
 		"@node-rs/argon2": "^1.1.0",
 		"@oslojs/crypto": "^1.0.1",
 		"@oslojs/encoding": "^1.1.0",
+		"@prisma/client": "5.22.0",
 		"drizzle-orm": "^0.33.0",
 		"lucide-svelte": "^0.460.1",
 		"near-api-js": "^5.0.1"

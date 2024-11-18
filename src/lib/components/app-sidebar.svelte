@@ -64,12 +64,12 @@
 <Sidebar.Root>
   <Sidebar.Content>
     <Sidebar.Group>
-      <Sidebar.GroupLabel>Application</Sidebar.GroupLabel>
+      <Sidebar.GroupLabel>Pages</Sidebar.GroupLabel>
       <Sidebar.GroupContent>
         <Sidebar.Menu>
           {#each items as item (item.title)}
             <Sidebar.MenuItem>
-              <Sidebar.MenuButton>
+              <Sidebar.MenuButton isActive={$page.url.pathname === item.url}>
                 {#snippet child({ props })}
                   <a 
                     href={item.url} 

@@ -1,0 +1,95 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  authToken String?  @unique
+  nearId    String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Proposal {
+  id                 Int          @id @default(autoincrement())
+  title              String
+  description        String
+  yesVotes           Int          @default(0)
+  noVotes            Int          @default(0)
+  manaTokenAllocated Float
+  isEnded            Boolean      @default(false)
+  submittedBy        String
+  manaHoursBudgeted  Int
+  targetApprovalDate DateTime?
+  createdAt          DateTime     @default(now())
+  updatedAt          DateTime?    @updatedAt
+  budgetWindowLow    Float
+  budgetWindowHigh   Float
+  subProjects        SubProject[]
+}
+
+model SubProject {
+  id             Int              @id @default(autoincrement())
+  proposalId     Int
+  subProjectName String
+  proposal       Proposal         @relation(fields: [proposalId], references: [id])
+  epics          Epic[]
+  votes          SubProjectVote[]
+}
+
+model Epic {
+  id           Int        @id @default(autoincrement())
+  subProjectId Int
+  epicName     String
+  subProject   SubProject @relation(fields: [subProjectId], references: [id])
+  tasks        Task[]
+}
+
+model Task {
+  id                 Int                   @id @default(autoincrement())
+  epicId             Int
+  taskName           String
+  manaTokenAllocated Float
+  epic               Epic                  @relation(fields: [epicId], references: [id])
+  rolesManaHours     RolesManaHour[]
+  votes              TaskPerformanceVote[]
+}
+
+model RolesManaHour {
+  id        Int    @id @default(autoincrement())
+  taskId    Int
+  roleName  String
+  manaHours Int
+  task      Task   @relation(fields: [taskId], references: [id])
+}
+
+model SubProjectVote {
+  id           Int        @id @default(autoincrement())
+  subProjectId Int
+  subProject   SubProject @relation(fields: [subProjectId], references: [id])
+  voterId      String // Could be user ID or username
+  vote         Boolean? // true for "yes", false for "no"
+}
+
+model TaskPerformanceVote {
+  id      Int      @id @default(autoincrement())
+  taskId  Int
+  task    Task     @relation(fields: [taskId], references: [id])
+  voterId String
+  voteeId String // The person being voted on (username or ID)
+  vote    Boolean?
+}
