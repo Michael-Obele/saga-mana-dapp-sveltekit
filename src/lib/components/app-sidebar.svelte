@@ -39,12 +39,10 @@
 </script>
 
 <Sidebar.Root class="border-r border-[#441D3A]">
-	<Sidebar.Header class="border-r border-[#441D3A] bg-[#ce711e] text-white">
+	<Sidebar.Header class="bg-[#ce711e] text-white">
 		<div class="py-7"></div>
 	</Sidebar.Header>
-	<Sidebar.Content
-		class="border-r border-[#441D3A] bg-gradient-to-b from-[#2A092A] to-[#8A4F8A] text-white shadow-lg"
-	>
+	<Sidebar.Content class="bg-gradient-to-b from-[#2A092A] to-[#8A4F8A] text-white shadow-lg">
 		<Sidebar.Group class="">
 			<Sidebar.GroupLabel class="mb-3 text-lg text-white">Victory Navigation</Sidebar.GroupLabel>
 			<Sidebar.GroupContent>
