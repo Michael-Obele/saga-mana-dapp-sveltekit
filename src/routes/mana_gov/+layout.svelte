@@ -4,9 +4,9 @@
   import Navbar from './components/Navbar.svelte';
 </script>
 
-<div class="min-h-screen bg-gray-100">
-  <Navbar />
-  <main class="container mx-auto px-4 py-8">
+<Navbar />
+<div class="min-h-screen">
+  <main class="mx-auto px-4 py-8">
     <slot />
   </main>
 </div>
