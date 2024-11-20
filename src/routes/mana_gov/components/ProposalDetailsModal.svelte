@@ -1,0 +1,40 @@
+<!-- src/routes/mana_gov/components/ProposalDetailsModal.svelte -->
+<script lang="ts">
+  import type { Proposal } from '../types/types';
+
+  export let proposal: Proposal;
+  export let closeModal: () => void;
+</script>
+
+<div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50">
+  <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-lg">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-2xl font-bold">{proposal.title}</h2>
+      <button
+        on:click={closeModal}
+        class="text-gray-500 hover:text-gray-700"
+      >
+        &times; <!-- Close button -->
+      </button>
+    </div>
+
+    <!-- Proposal Details -->
+    <div class="mb-4">
+      <p><strong>Description:</strong> {proposal.description || 'No description available.'}</p>
+      <p><strong>Total Tokens Allocated:</strong> {proposal.manaTokensAllocated ?? 'N/A'}</p>
+      <p><strong>Yes Votes:</strong> {proposal.yesVotes}</p>
+      <p><strong>No Votes:</strong> {proposal.noVotes}</p>
+      <p><strong>Status:</strong> {proposal.isEnded ? 'Ended' : 'Active'}</p>
+    </div>
+
+    <!-- Actions -->
+    <div class="flex justify-end">
+      <button
+        on:click={closeModal}
+        class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-600"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
