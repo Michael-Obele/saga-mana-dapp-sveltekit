@@ -2,7 +2,7 @@
 <script lang="ts">
   import { onMount } from 'svelte';
   import ProjectExecutionForm from '../components/ProjectExecutionForm.svelte';
-  import '../styles.css';
+ 
 
   let projectPlans: { id: number; projectName: string; tasks?: { id: number }[] }[] = [];
   let loading = true;
@@ -53,9 +53,9 @@
   <div>Loading...</div>
 {:else}
   <div class="create-project-execution-page">
-    <header class="text-white text-xl font-bold">
+    <header class="text-xl font-bold text-white">
       <div class="title flex-grow text-center">
-        <h1 class="text-white text-xl font-bold">Create New Project Execution</h1>
+        <h1 class="text-xl font-bold text-white">Create New Project Execution</h1>
       </div>
     </header>
 
