@@ -3,6 +3,7 @@
   // import Wallet from '../wallet_components/Wallet.svelte';
   import Navbar from './Navbar.svelte';
   import Auth from './Auth.svelte';
+  import logo from '$lib/assets/sagahalla.png';
   
   export let appName = "SagaHalla";
   
@@ -21,7 +22,7 @@
   <!-- App Logo and Site Name -->
   <div class="logo flex items-center space-x-2 p-2">
     <a href="/">
-      <img src="/sagahalla.png" alt="SagaHalla Logo" class="h-10" />
+      <img src="{logo}" alt="SagaHalla Logo" class="h-10" />
     </a>
     <span class="text-xl font-bold text-white">{appName}</span>
   </div>

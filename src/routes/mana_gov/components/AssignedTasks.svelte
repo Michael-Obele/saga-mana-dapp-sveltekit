@@ -1,4 +1,3 @@
-<!-- src/routes/mana_gov/components/AssignedTasks.svelte -->
 <script lang="ts">
   import type { Project, Task } from '../types/types';
 
